@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="Button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="57dp"
+            android:text="오늘 데이트는 뭐하지?"
+            android:textSize="27dp"/>
+
+        <Button
+            android:id="@+id/btnFoodChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="146dp"
+            android:text="음식" />
+
+        <Button
+            android:id="@+id/btnNavigation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnFoodChoice"
+            android:layout_centerHorizontal="true"
+            android:text="길찾기" />
+
+        <Button
+            android:id="@+id/button4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnNavigation"
+            android:layout_centerHorizontal="true"
+            android:text="Button" />
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>
