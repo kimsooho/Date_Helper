@@ -14,10 +14,19 @@
         <cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="140dp">
 
         </cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager>
 
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#000"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:padding="10dp"
+            />
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
@@ -37,115 +46,140 @@
             android:padding="10dp"
             />
 
-        <TableLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="160dp">
+            android:layout_height="160dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
-            <TableRow
+            <RadioGroup
+                android:id="@+id/rg1"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
                 <RadioButton
-                    android:id="@+id/radioButton9"
+                    android:id="@+id/rbKorea"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="한식"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/rbAmerica"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="양식"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/rbFast"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="한식" />
+                    android:text="패스트푸드"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/radioButton8"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rbDessert"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="중식" />
+                    android:text="디저트"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </RadioGroup>
 
-                <RadioButton
-                    android:id="@+id/radioButton7"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:text="일식" />
-            </TableRow>
-
-            <TableRow
+            <RadioGroup
+                android:id="@+id/rg2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
                 <RadioButton
-                    android:id="@+id/radioButton12"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rbChina"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="라면" />
+                    android:text="중식"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/radioButton11"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rbMeat"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:text="고기" />
+                    android:text="고기"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/radioButton10"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rbPizza"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="치킨" />
-            </TableRow>
+                    android:text="피자"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
-            <TableRow
+                <RadioButton
+                    android:id="@+id/rbNoodle"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="면류"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </RadioGroup>
+
+            <RadioGroup
+                android:id="@+id/rg3"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_weight="1">
 
                 <RadioButton
-                    android:id="@+id/radioButton15"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rbJapan"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="분식/야식/디저트" />
+                    android:text="일식"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/radioButton14"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rbChicken"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="기타" />
+                    android:text="치킨"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/radioButton13"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rbSnack"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="Random!" />
-            </TableRow>
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                    android:text="분식"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
 
                 <RadioButton
-                    android:id="@+id/radioButton18"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/rbOther"
+                    android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_weight="1"
-                    android:text="RadioButton" />
-
-                <RadioButton
-                    android:id="@+id/radioButton17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:text="RadioButton" />
-
-                <RadioButton
-                    android:id="@+id/radioButton16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:text="RadioButton" />
-            </TableRow>
-
-        </TableLayout>
+                    android:text="기타"
+                    android:textSize="15dp"
+                    android:textStyle="bold" />
+            </RadioGroup>
+        </LinearLayout>
 
         <View
             android:id="@+id/view2"
@@ -157,11 +191,102 @@
             android:padding="10dp"
             />
 
-        <TextView
-            android:id="@+id/textView2"
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp"
-            android:text="TextView" />
+            android:layout_height="120dp">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn0"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Button" />
+
+                <Button
+                    android:id="@+id/btn1"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Button" />
+
+                <Button
+                    android:id="@+id/btn2"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Button" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn3"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Button"
+                    />
+
+                <Button
+                    android:id="@+id/btn4"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Button" />
+
+                <Button
+                    android:id="@+id/btn5"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Button" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/btn6"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Button" />
+
+                <Button
+                    android:id="@+id/btn7"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Button" />
+
+                <Button
+                    android:id="@+id/btn8"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_weight="1"
+                    android:text="Button" />
+            </TableRow>
+
+        </TableLayout>
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="#000"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:padding="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -169,17 +294,18 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/b"
+                android:id="@+id/btnRandom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="다시 고르기" />
+                android:text="랜덤 선택" />
 
             <Button
-                android:id="@+id/button5"
+                android:id="@+id/btnFin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:text="취소" />
         </LinearLayout>
 
 

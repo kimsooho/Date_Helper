@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnNavigation"
             android:layout_centerHorizontal="true"
-            android:text="Button" />
+            android:text="HISTORY" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>
