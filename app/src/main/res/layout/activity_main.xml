@@ -23,8 +23,8 @@
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="57dp"
-            android:text="오늘 데이트는 뭐하지?"
-            android:textSize="27dp"/>
+            android:text="우리 기억들"
+            android:textSize="27dp" />
 
         <Button
             android:id="@+id/btnFoodChoice"
@@ -36,20 +36,29 @@
             android:text="음식" />
 
         <Button
-            android:id="@+id/btnNavigation"
+            android:id="@+id/btnMap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/btnFoodChoice"
             android:layout_centerHorizontal="true"
-            android:text="길찾기" />
+            android:text="장소 검색" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnHistory"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/btnNavigation"
+            android:layout_below="@+id/btnMap"
             android:layout_centerHorizontal="true"
             android:text="HISTORY" />
+
+        <TextView
+            android:id="@+id/tvResult"
+            android:layout_width="178dp"
+            android:layout_height="153dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="59dp"
+            android:text="TextView" />
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

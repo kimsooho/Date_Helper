@@ -1,6 +1,8 @@
 package com.example.admin.project;
 
+import android.app.Activity;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.Image;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
@@ -44,7 +46,7 @@ public class foodChoice extends AppCompatActivity implements View.OnClickListene
     String[] Dessert = {"빙수", "마카롱", "몽블랑", "조각케이크", "밀푀유", "허니브레드", "도넛", "타르트", "아이스크림"};
     String[] Noodle = {"불닭볶음면", "비빔면", "짜파게티", "짜왕", "신라면", "진라면", "너구리", "진짬뽕", "라면 섞어먹기"};
     String[] Other = {"쌀국수", "카레", "돈가스", "곱창", "닭발", "아귀찜", "족발, 보쌈", "빵", "굶기"};
-
+    String btnText;
 
     public foodChoice() {
         radioButtons = new RadioButton[]{rbKorea, rbChina, rbJapan, rbAmerica, rbMeat, rbChicken, rbFast, rbPizza, rbSnack, rbDessert, rbNoodle};
@@ -105,13 +107,17 @@ public class foodChoice extends AppCompatActivity implements View.OnClickListene
                 public void onClick(View v) {
                     for (int i = 0; i < btnIDs.length; ++i) {
                         if (v.getId() == btn[i].getId()) {
+                            btnText = btn[i].getText().toString();
                             final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(foodChoice.this);
                             alertDialogBuilder.setTitle("확인");
 
-                            alertDialogBuilder.setMessage(btn[i].getText() + "을(를) 선택 할까요?").setCancelable(false)
+                            alertDialogBuilder.setMessage(btnText + "을(를) 선택 할까요?").setCancelable(false)
                                     .setPositiveButton("선택", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
+                                            Intent intent = new Intent(foodChoice.this, MainActivity.class);
+                                            intent.putExtra("food",btnText.toString());
+                                            setResult(Activity.RESULT_OK, intent);
                                             finish();
                                         }
                                     })
