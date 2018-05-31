@@ -4,61 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:text="Button" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="57dp"
-            android:text="우리 기억들"
-            android:textSize="27dp" />
-
-        <Button
-            android:id="@+id/btnFoodChoice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="146dp"
-            android:text="음식" />
-
-        <Button
-            android:id="@+id/btnMap"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnFoodChoice"
-            android:layout_centerHorizontal="true"
-            android:text="장소 검색" />
-
-        <Button
-            android:id="@+id/btnHistory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/btnMap"
-            android:layout_centerHorizontal="true"
-            android:text="HISTORY" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFCCFF"
+        >
 
         <TextView
             android:id="@+id/tvResult"
-            android:layout_width="178dp"
-            android:layout_height="153dp"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="59dp"
-            android:text="TextView" />
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
 
-    </RelativeLayout>
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="165dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="30dp"
+            android:text="제목" />
+
+        <View
+            android:id="@+id/view6"
+            android:layout_width="350dp"
+            android:layout_height="2dp"
+            android:background="#FF0099"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_gravity="center"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:background="#FF99CC"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="장소 검색" />
+
+        <Button
+            android:id="@+id/btnFoodChoice"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:background="#FF99CC"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="오늘의 메뉴" />
+
+        <Button
+            android:id="@+id/btnMap"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:background="#FF99CC"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="지도 보기" />
+
+        <Button
+            android:id="@+id/btnHistory"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:background="#FF99CC"
+            android:layout_gravity="center"
+            android:layout_margin="5dp"
+            android:text="HISTORY" />
+
+        <View
+            android:id="@+id/view7"
+            android:layout_width="350dp"
+            android:layout_height="2dp"
+            android:background="#FF0099"
+            android:padding="10dp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:layout_gravity="center"/>
+
+        <TextView
+            android:id="@+id/tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

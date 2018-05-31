@@ -109,8 +109,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //tvResult.setText(tvResult.getText().toString().substring(tvResult.length()-1));
             Toast.makeText(this,sFood,Toast.LENGTH_LONG).show();
-
-
         }else if(requestCode == 300 && resultCode == Activity.RESULT_OK){
             place = PlacePicker.getPlace(this, data);
             name = place.getName();
@@ -170,7 +168,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     calDate = firstDate.getTime() - secondDate.getTime();
                     calDate = calDate / (24 * 60 * 60 * 1000);
                     calDate++;
-                    tvResult.setText("사귄지 " + calDate + "일");
+                    tvResult.setText("함께    " + date1 + "\n" +
+                            "오늘    " + date2 + "\t\t\t\t\t\t\t\t\t\t" + calDate + "일째");
 
                     --month;
 

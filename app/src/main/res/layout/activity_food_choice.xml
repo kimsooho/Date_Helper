@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FFCCFF"
         android:orientation="vertical">
 
         <cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager
@@ -22,10 +23,11 @@
             android:id="@+id/view4"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#000"
+            android:background="#FF0099"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:padding="10dp"
+
             />
         <TextView
             android:id="@+id/textView"
@@ -40,7 +42,7 @@
             android:id="@+id/view"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#000"
+            android:background="#FF0099"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:padding="10dp"
@@ -185,7 +187,7 @@
             android:id="@+id/view2"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#000"
+            android:background="#FF0099"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:padding="10dp"
@@ -205,6 +207,7 @@
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="#FF99CC"
                     android:text="Button" />
 
                 <Button
@@ -212,6 +215,7 @@
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="#FF99CC"
                     android:text="Button" />
 
                 <Button
@@ -219,6 +223,7 @@
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="#FF99CC"
                     android:text="Button" />
             </TableRow>
 
@@ -232,6 +237,7 @@
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="#FF99CC"
                     android:text="Button"
                     />
 
@@ -240,6 +246,7 @@
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="#FF99CC"
                     android:text="Button" />
 
                 <Button
@@ -247,6 +254,7 @@
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="#FF99CC"
                     android:text="Button" />
             </TableRow>
 
@@ -260,6 +268,7 @@
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="#FF99CC"
                     android:text="Button" />
 
                 <Button
@@ -267,6 +276,7 @@
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="#FF99CC"
                     android:text="Button" />
 
                 <Button
@@ -274,6 +284,7 @@
                     android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_weight="1"
+                    android:background="#FF99CC"
                     android:text="Button" />
             </TableRow>
 
@@ -283,7 +294,7 @@
             android:id="@+id/view3"
             android:layout_width="match_parent"
             android:layout_height="2dp"
-            android:background="#000"
+            android:background="#FF0099"
             android:paddingLeft="5dp"
             android:paddingRight="5dp"
             android:padding="10dp" />
@@ -298,6 +309,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="#FF99CC"
                 android:text="랜덤 선택" />
 
             <Button
@@ -305,6 +317,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="#FF99CC"
                 android:text="취소" />
         </LinearLayout>
 
