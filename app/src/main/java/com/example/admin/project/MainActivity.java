@@ -3,6 +3,7 @@ package com.example.admin.project;
 import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,16 +26,20 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    Button btn, btnFoodChoice, btnHistory, btnMap;
+    Button btn, btnFoodChoice, btnMemo, btnMap;
     int year, month, day;
     int dyear, dmonth, dday;
-    long calDate=0;
-    String sFood="1";
+    long counter;
+    String sFood;
+    String date = "";
+    String startDay, nowDay;
     int FOODREQUESTCODE = 100;
     public static ArrayList<LatLng> arrayPoint = new ArrayList<>();
     public static ArrayList<String> arrayName = new ArrayList<>();
+    public static ArrayList<String> arrayDate = new ArrayList<>();
     Place place;
     CharSequence name;
     CharSequence address;
@@ -45,17 +50,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setTitle("D . H");
 
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
 
         tvResult = (TextView)findViewById(R.id.tvResult);
-        //tvResult.setText("오늘 먹은 음식 : ");
-        if(calDate == 0){
+        if(counter == 0){
             tvResult.setText("현재 날짜가 입력되지 않았습니다.");
         }else {
-            tvResult.setText("사귄지 " + calDate + "일");
+            tvResult.setText("사귄지 " + counter + "일");
         }
         btn = (Button)findViewById(R.id.button);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -73,13 +78,44 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         btnFoodChoice = (Button)findViewById(R.id.btnFoodChoice);
-        btnHistory = (Button)findViewById(R.id.btnHistory);
+        btnMemo = (Button)findViewById(R.id.btnMemo);
         btnMap = (Button)findViewById(R.id.btnMap);
         btnFoodChoice.setOnClickListener(this);
-        btnHistory.setOnClickListener(this);
+        btnMemo.setOnClickListener(this);
         btnMap.setOnClickListener(this);
+        preferences();
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        String[] latlong;
+        SharedPreferences activity = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = activity.edit();
+        editor.putString("date",startDay);
+        editor.putInt("arraySize",arrayPoint.size());
+        editor.putLong("cal",counter);
+
+        for(int i=0; i<arrayPoint.size(); ++i){
+            editor.putString("arrayName" + i,arrayName.get(i).toString());
+            editor.putString("arrayDate" + i,arrayDate.get(i).toString());
+
+            latlong = arrayPoint.get(i).toString().split(",");
+            latlong[0] = latlong[0].replace("lat/lng: (","");
+            latlong[1] = latlong[1].replace(")","");
+
+            editor.putString("pointX" + i,latlong[0]);
+            editor.putString("pointY" + i,latlong[1]);
+        }
+
+        editor.commit();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+    }
 
     @Override
     public void onClick(View v) {
@@ -88,13 +124,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Intent intent = new Intent(this, foodChoice.class);
                 startActivityForResult(intent,FOODREQUESTCODE);
                 break;
-            case R.id.btnHistory:
-                Toast.makeText(this,sFood,Toast.LENGTH_LONG).show();
+            case R.id.btnMemo:
+                intent = new Intent(this, memo.class);
+                startActivity(intent);
                 break;
             case R.id.btnMap:
+
                 intent = new Intent(MainActivity.this, MapsActivity.class);
                 intent.putExtra("point",arrayPoint);
                 intent.putExtra("name",arrayName);
+                intent.putExtra("date",arrayDate);
                 startActivity(intent);
                 break;
         }
@@ -105,9 +144,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onActivityResult(requestCode, resultCode, data);
         if(requestCode == FOODREQUESTCODE && resultCode == Activity.RESULT_OK){
             sFood = data.getExtras().getString("food").toString();
-            tvResult.append(sFood + ",");
 
-            //tvResult.setText(tvResult.getText().toString().substring(tvResult.length()-1));
             Toast.makeText(this,sFood,Toast.LENGTH_LONG).show();
         }else if(requestCode == 300 && resultCode == Activity.RESULT_OK){
             place = PlacePicker.getPlace(this, data);
@@ -116,7 +153,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             latlng = place.getLatLng();
             arrayPoint.add(latlng);
             arrayName.add(name.toString());
-            Toast.makeText(MainActivity.this, " 장소명 : " + name + "\n주소 : " + address + "\n좌표 : " + latlng,Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this, " 장소명 : " + name + "\n주소 : " + address + "\n좌표 : " + latlng,Toast.LENGTH_LONG).show();
+
+            nowDate();
+            arrayDate.add(date);
         }
     }
 
@@ -140,6 +180,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         "제작 5293348 김수호\n\n" +
                         "v 1.0\n").show();
                 break;
+            case R.id.menuReset:
+                reset();
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -149,30 +192,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         @Override
         public void onDateSet(DatePicker datePicker, int i, int i1, int i2) {
             dyear = i; dmonth = i1+1; dday = i2;
-            year = calendar.get(Calendar.YEAR);
-            month = calendar.get(Calendar.MONTH);
             month++;
-            day = calendar.get(Calendar.DAY_OF_MONTH);
-            if(year < dyear || month < dmonth || day < dday){
+            if(dyear > year || ( dyear == year && dmonth > month) || (dyear == year && dmonth == month && dday > day)){
                 Toast.makeText(MainActivity.this,"날짜를 다시 입력해주세요",Toast.LENGTH_LONG).show();
                 --month;
                 new DatePickerDialog(MainActivity.this, dateSetListener,year,month,day).show();
             }
             else {
-                String date1 = year + "-" + month + "-" + day;
-                String date2 = dyear + "-" + dmonth + "-" + dday;
+                startDay = dyear+"-"+dmonth+"-"+dday;
+                nowDay = year+"-"+month+"-"+day;
+
                 try {
-                    SimpleDateFormat format = new SimpleDateFormat("yyyy-mm-dd");
-                    Date firstDate = format.parse(date1);
-                    Date secondDate = format.parse(date2);
-                    calDate = firstDate.getTime() - secondDate.getTime();
-                    calDate = calDate / (24 * 60 * 60 * 1000);
-                    calDate++;
-                    tvResult.setText("함께    " + date1 + "\n" +
-                            "오늘    " + date2 + "\t\t\t\t\t\t\t\t\t\t" + calDate + "일째");
-
+                    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                    Date startDate = format.parse(startDay);
+                    Date nowDate = format.parse(nowDay);
+                    counter = nowDate.getTime() - startDate.getTime();
+                    counter /= (24*60*60*1000);
+                    counter++;
+                    tvResult.setText("함께    " + startDay + "\n" +
+                            "오늘    " + nowDay + "\t\t\t\t\t\t\t\t\t\t" + counter + "일째");
                     --month;
-
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -180,4 +219,51 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
     };
+    private void nowDate(){
+        year = calendar.get(Calendar.YEAR);
+        month = calendar.get(Calendar.MONTH);
+        day = calendar.get(Calendar.DAY_OF_MONTH);
+        month++;
+        date = year + "-" + month + "-" + day;
+        month--;
+    }
+    private void preferences(){
+        SharedPreferences activity = getPreferences(MODE_PRIVATE);
+        int size = activity.getInt("arraySize",0);
+        startDay = activity.getString("date","");
+        counter = activity.getLong("cal",0);
+
+        for(int i=0; i<size; ++i){ //*****************
+            arrayName.add(activity.getString("arrayName" + i, null));
+            arrayDate.add(activity.getString("arrayDate" + i, null));
+            arrayPoint.add(new LatLng(Double.parseDouble(activity.getString("pointX" + i,"0")),
+                    Double.parseDouble(activity.getString("pointY" + i, "0"))));
+        }
+        if(!(startDay.equals(""))){
+            nowDate();
+            tvResult.setText("함께    " + startDay + "\n" +
+                    "오늘    " + date + "\t\t\t\t\t\t\t\t\t\t" + counter + "일째");
+
+        }
+    }
+    private void reset(){
+        SharedPreferences activity = getPreferences(MODE_PRIVATE);
+        SharedPreferences.Editor editor = activity.edit();
+        int size = activity.getInt("arraySize",0);
+        for(int i=0; i<size; ++i){
+            editor.remove("arrayName"+i);
+            editor.remove("arrayDate"+i);
+            editor.remove("pointX"+i);
+            editor.remove("pointY"+i);
+        }
+        arrayPoint.clear();
+        arrayDate.clear();
+        arrayName.clear();
+        startDay = "";
+        editor.remove("date");
+        editor.remove("arraySize");
+        tvResult.setText("현재 날짜가 입력되지 않았습니다.");
+
+    }
 }
+

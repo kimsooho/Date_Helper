@@ -18,8 +18,9 @@ import java.util.ArrayList;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    public ArrayList<LatLng> arrayPoints = new ArrayList<LatLng>(); // 누른 순서대로 리스트에 저장
-    public ArrayList<String> arrayNames = new ArrayList<>();
+    private ArrayList<LatLng> arrayPoints = new ArrayList<LatLng>();
+    private ArrayList<String> arrayNames = new ArrayList<>();
+    private ArrayList<String> arrayDates = new ArrayList<>();
     PolylineOptions polylineOptions = new PolylineOptions();
 
     @Override
@@ -36,6 +37,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = getIntent();
         arrayPoints = (ArrayList<LatLng>)intent.getSerializableExtra("point");
         arrayNames = (ArrayList<String>)intent.getSerializableExtra("name");
+        arrayDates = (ArrayList<String>)intent.getSerializableExtra("date");
     }
 
     @Override
@@ -44,8 +46,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions markerOptions = new MarkerOptions();
         if(arrayPoints.size() != 0) {
             for (int i = 0; i < arrayPoints.size(); ++i) {
-                markerOptions.position(arrayPoints.get(i)).title(arrayNames.get(i));
+                markerOptions.position(arrayPoints.get(i)).title("(" + arrayDates.get(i) +")" + "(" + arrayNames.get(i) + ")");
                 mMap.addMarker(markerOptions);
+
 
             }
             polylineOptions.addAll(arrayPoints);
@@ -54,4 +57,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
     }
+
+
 }

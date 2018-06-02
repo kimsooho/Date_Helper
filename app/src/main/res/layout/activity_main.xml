@@ -26,9 +26,9 @@
             android:layout_width="match_parent"
             android:layout_height="165dp"
             android:gravity="center"
-            android:textStyle="bold"
+            android:text="D  a  t  e    H  e  l  p  e  r"
             android:textSize="30dp"
-            android:text="제목" />
+            android:textStyle="bold" />
 
         <View
             android:id="@+id/view6"
@@ -47,7 +47,9 @@
             android:background="#FF99CC"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:text="장소 검색" />
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="장 소  검 색" />
 
         <Button
             android:id="@+id/btnFoodChoice"
@@ -56,7 +58,9 @@
             android:background="#FF99CC"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:text="오늘의 메뉴" />
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="오 늘 의  메 뉴" />
 
         <Button
             android:id="@+id/btnMap"
@@ -65,16 +69,20 @@
             android:background="#FF99CC"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:text="지도 보기" />
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="지 도  보 기" />
 
         <Button
-            android:id="@+id/btnHistory"
+            android:id="@+id/btnMemo"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:background="#FF99CC"
             android:layout_gravity="center"
             android:layout_margin="5dp"
-            android:text="HISTORY" />
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="메 모 장" />
 
         <View
             android:id="@+id/view7"

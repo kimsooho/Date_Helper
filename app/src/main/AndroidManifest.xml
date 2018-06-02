@@ -43,7 +43,8 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".foodChoice"></activity>
+        <activity android:name=".foodChoice" />
+        <activity android:name=".memo"></activity>
     </application>
 
 </manifest>

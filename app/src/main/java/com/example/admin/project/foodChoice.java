@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
 
 import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
 
-public class foodChoice extends AppCompatActivity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
+public class foodChoice extends Activity implements View.OnClickListener, RadioGroup.OnCheckedChangeListener {
     Adapter adapter;
     AutoScrollViewPager viewPager; // 슬라이드
     RadioGroup rg1, rg2, rg3;

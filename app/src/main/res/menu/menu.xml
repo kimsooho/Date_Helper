@@ -5,6 +5,9 @@
         android:id="@+id/menuDate"
         android:title="날짜 입력" />
     <item
+        android:id="@+id/menuReset"
+        android:title="초기화" />
+    <item
         android:id="@+id/menuInfo"
         android:title="앱 정보"/>
 </menu>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".memo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFCCFF">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnFin"
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:text="뒤  로  가  기"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:background="#FF99CC"
+                    android:layout_margin="15dp"/>
+
+                <View
+                    android:id="@+id/view5"
+                    android:layout_width="350dp"
+                    android:layout_height="2dp"
+                    android:background="#FF0099"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:padding="10dp"
+                    android:layout_gravity="center"
+                    />
+
+                <EditText
+                    android:id="@+id/memo"
+                    android:layout_width="match_parent"
+                    android:layout_height="484dp"
+                    android:layout_margin="15dp"
+                    android:background="#FF99CC"
+                    android:ems="10"
+                    android:gravity="top"
+                    android:hint="MEMO"
+                    android:padding="10dp"
+                    android:textSize="20dp" />
+            </LinearLayout>
+        </ScrollView><![CDATA[
+
+        ;
+            android:inputType="textPersonName"
+            android:text="Name" />
+    ]]>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
